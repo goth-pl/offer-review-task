@@ -8,9 +8,9 @@ class Product::MailerBoxParameters < ProductParameters
   MIN_LENGTH = 1
   MAX_LENGTH = 200
 
-  attribute :width, :decimal
-  attribute :height, :decimal
-  attribute :length, :decimal
+  attribute :width, :integer
+  attribute :height, :integer
+  attribute :length, :integer
 
   validates :width, presence: true, numericality: { greater_than_or_equal_to: MIN_WIDTH, less_than_or_equal_to: MAX_WIDTH }
   validates :height, presence: true, numericality: { greater_than_or_equal_to: MIN_HEIGHT, less_than_or_equal_to: MAX_HEIGHT }

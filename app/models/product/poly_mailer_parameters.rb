@@ -7,8 +7,8 @@ class Product::PolyMailerParameters < ProductParameters
   MAX_HEIGHT = 200
   MATERIALS = %i(black transparent)
 
-  attribute :width, :decimal
-  attribute :height, :decimal
+  attribute :width, :integer
+  attribute :height, :integer
   enum :material, MATERIALS.zip(MATERIALS).to_h
 
   validates :width, presence: true, numericality: { greater_than_or_equal_to: MIN_WIDTH, less_than_or_equal_to: MAX_WIDTH }
