@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_083405) do
+ActiveRecord::Schema.define(version: 2020_10_07_092648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "offers", force: :cascade do |t|
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "salesman_id", null: false
+    t.bigint "client_id", null: false
+    t.index ["client_id"], name: "index_offers_on_client_id"
+    t.index ["salesman_id"], name: "index_offers_on_salesman_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "type"
@@ -22,6 +32,17 @@ ActiveRecord::Schema.define(version: 2020_10_07_083405) do
     t.jsonb "parameters", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "offer_id", null: false
+    t.index ["offer_id"], name: "index_products_on_offer_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "role"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "offers", "users", column: "client_id"
+  add_foreign_key "offers", "users", column: "salesman_id"
+  add_foreign_key "products", "offers"
 end
