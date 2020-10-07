@@ -20,7 +20,7 @@ Response (status 200)
     "token": string
 }
 
-Error (status 400)
+Error (status 401)
 {
     "error": "invalid_credentials"
 }
@@ -143,11 +143,6 @@ Response (status 201)
    }
 }
 
-Error (status 400)
-{
-    "errors": a list of validation errors
-}
-
 Error (status 401)
 {
     "error": "invalid_token / missing_token"
@@ -156,6 +151,11 @@ Error (status 401)
 Error (status 403)
 {
     "error": "unauthorized"
+}
+
+Error (status 422)
+{
+    "errors": a list of validation errors
 }
 ```
 
@@ -196,6 +196,11 @@ Error (status 403)
 {
     "error": "unauthorized"
 }
+
+Error (status 422)
+{
+    "errors": a list of validation errors
+}
 ```
 
 #### 5. Reject an offer
@@ -234,6 +239,11 @@ Error (status 401)
 Error (status 403)
 {
     "error": "unauthorized"
+}
+
+Error (status 422)
+{
+    "errors": a list of validation errors
 }
 ```
 

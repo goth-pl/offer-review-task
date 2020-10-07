@@ -19,7 +19,7 @@ class Api::V1::OffersController < ApplicationController
     command = CreateOffer.new
 
     command.on(:create_offer_successful) { |offer| render json: { offer: prepare_offers_to_render(offer) }, status: :created }
-    command.on(:create_offer_failed) { |errors| render json: { errors: errors }, status: :bad_request }
+    command.on(:create_offer_failed) { |errors| render json: { errors: errors }, status: :unprocessable_entity }
 
     command.call(offer_params)
   end
@@ -30,7 +30,7 @@ class Api::V1::OffersController < ApplicationController
     command = AcceptOffer.new
 
     command.on(:accept_offer_successful) { |offer| render json: { offer: prepare_offers_to_render(offer) } }
-    command.on(:accept_offer_failed) { |errors| render json: { errors: errors }, status: :bad_request }
+    command.on(:accept_offer_failed) { |errors| render json: { errors: errors }, status: :unprocessable_entity }
 
     command.call(@offer)
   end
@@ -41,7 +41,7 @@ class Api::V1::OffersController < ApplicationController
     command = RejectOffer.new
 
     command.on(:reject_offer_successful) { |offer| render json: { offer: prepare_offers_to_render(offer) } }
-    command.on(:reject_offer_failed) { |errors| render json: { errors: errors }, status: :bad_request }
+    command.on(:reject_offer_failed) { |errors| render json: { errors: errors }, status: :unprocessable_entity }
 
     command.call(@offer)
   end
