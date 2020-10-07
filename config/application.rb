@@ -35,5 +35,6 @@ module PackhelpDemoDay
     config.api_only = true
 
     config.autoload_paths += Dir[Rails.root.join('app', 'commands', '{**}')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'services')]
   end
 end
