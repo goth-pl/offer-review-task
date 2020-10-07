@@ -3,7 +3,7 @@ class Product < ApplicationRecord
 
   validates :type, presence: true
   validates :quantity, presence: true, numericality: { greater_than: 0 }
-  validates :parameters, store_model: true
+  validates :parameters, store_model: { merge_errors: true }
 
   before_save :set_price
 
