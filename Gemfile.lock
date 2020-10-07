@@ -134,6 +134,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    store_model (0.8.0)
+      activerecord (>= 5.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tzinfo (1.2.7)
@@ -155,6 +157,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.3)
   spring
   spring-watcher-listen (~> 2.0.0)
+  store_model
   tzinfo-data
 
 RUBY VERSION
